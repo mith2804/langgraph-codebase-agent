@@ -1,0 +1,5 @@
+﻿.env
+agent/.env
+__pycache__/
+agent/__pycache__/
+*.pyc
