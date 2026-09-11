@@ -14,6 +14,7 @@ load_dotenv()
 
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+
 COLLECTION_NAME = os.getenv(
     "COLLECTION_NAME",
     "codebase_chunks_v2"
@@ -24,9 +25,41 @@ COLLECTION_NAME = os.getenv(
 # 2. EMBEDDING MODEL
 # ==========================================
 
-embedding_model = SentenceTransformer(
+EMBEDDING_MODEL_NAME = (
     "sentence-transformers/all-MiniLM-L6-v2"
 )
+
+_embedding_model = None
+
+
+def get_embedding_model():
+
+    global _embedding_model
+
+    if _embedding_model is None:
+
+        print(
+            "[EMBEDDING] "
+            "Loading embedding model for the first time..."
+        )
+
+        _embedding_model = SentenceTransformer(
+            EMBEDDING_MODEL_NAME
+        )
+
+        print(
+            "[EMBEDDING] "
+            "Embedding model loaded successfully."
+        )
+
+    else:
+
+        print(
+            "[EMBEDDING] "
+            "Using cached embedding model."
+        )
+
+    return _embedding_model
 
 
 # ==========================================
@@ -42,6 +75,7 @@ def extract_filename(query: str):
     )
 
     if matches:
+
         return matches[0].lower()
 
     return None
@@ -53,11 +87,26 @@ def extract_filename(query: str):
 
 def search_codebase(
     query: str,
-    limit: int = 3
+    limit: int = 5
 ):
 
     print("\n[QDRANT SEARCH]")
     print("Query:", query)
+
+    # --------------------------------------
+    # Validate limit
+    # --------------------------------------
+
+    limit = min(
+        max(int(limit), 1),
+        10
+    )
+
+    print("Requested retrieval limit:", limit)
+
+    # --------------------------------------
+    # Detect filename
+    # --------------------------------------
 
     target_filename = extract_filename(
         query
@@ -80,8 +129,12 @@ def search_codebase(
     # Create query embedding
     # --------------------------------------
 
+    embedding_model = get_embedding_model()
+
     query_vector = embedding_model.encode(
-        query
+        query,
+        convert_to_numpy=True,
+        normalize_embeddings=True,
     ).tolist()
 
     # --------------------------------------
@@ -107,10 +160,7 @@ def search_codebase(
 
         "query": query_vector,
 
-        "limit": min(
-            max(limit, 1),
-            20
-        ),
+        "limit": limit,
 
         "with_payload": True,
 
@@ -154,7 +204,7 @@ def search_codebase(
 
         json=payload,
 
-        timeout=60,
+        timeout=30,
 
     )
 
@@ -293,7 +343,7 @@ if __name__ == "__main__":
 
         "What functions are defined in nodes.py?",
 
-        limit=10
+        limit=5
 
     )
 
