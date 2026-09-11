@@ -7,8 +7,8 @@ from agent.graph import build_graph
 # ============================================================
 
 st.set_page_config(
-    page_title="Codebase Agent",
-    page_icon="⚡",
+    page_title="Autonomous AI Codebase Agent",
+    page_icon="AI",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -27,23 +27,17 @@ st.markdown(
        ======================================================== */
 
     .stApp {
-        background:
-            radial-gradient(
-                circle at 80% 5%,
-                rgba(92, 70, 180, 0.10),
-                transparent 28%
-            ),
-            #090b10;
+        background: #0b0d12;
     }
 
     .main .block-container {
-        max-width: 1220px;
-        padding-top: 2rem;
+        max-width: 1200px;
+        padding-top: 2.5rem;
         padding-bottom: 4rem;
     }
 
     h1, h2, h3 {
-        letter-spacing: -0.6px;
+        letter-spacing: -0.5px;
     }
 
 
@@ -52,64 +46,12 @@ st.markdown(
        ======================================================== */
 
     section[data-testid="stSidebar"] {
-        background: #0e1117;
-        border-right: 1px solid #202532;
+        background: #11141b;
+        border-right: 1px solid #242936;
     }
 
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 8px;
-    }
-
-    .brand-logo {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-            linear-gradient(
-                135deg,
-                #6d5dfc,
-                #3b82f6
-            );
-        box-shadow:
-            0 8px 24px rgba(76, 78, 220, 0.28);
-    }
-
-    .brand-logo svg {
-        width: 25px;
-        height: 25px;
-    }
-
-    .brand-title {
-        font-size: 1.12rem;
-        font-weight: 800;
-        color: #f4f6fa;
-        line-height: 1.1;
-    }
-
-    .brand-subtitle {
-        font-size: 0.68rem;
-        color: #737d8e;
-        margin-top: 4px;
-    }
-
-
-    /* ========================================================
-       SECTION LABEL
-       ======================================================== */
-
-    .section-label {
-        color: #788398;
-        font-size: 0.70rem;
-        font-weight: 800;
-        letter-spacing: 1.7px;
-        text-transform: uppercase;
-        margin-bottom: 0.55rem;
+    section[data-testid="stSidebar"] h1 {
+        font-size: 1.45rem;
     }
 
 
@@ -118,114 +60,76 @@ st.markdown(
        ======================================================== */
 
     .hero {
-        position: relative;
-        overflow: hidden;
-        padding: 2.6rem 2.7rem;
-        border-radius: 22px;
-        border: 1px solid #272d3b;
+        padding: 2.2rem 2.4rem;
+        border-radius: 18px;
+        border: 1px solid #252b38;
         background:
-            radial-gradient(
-                circle at 90% 20%,
-                rgba(98, 78, 220, 0.18),
-                transparent 30%
-            ),
             linear-gradient(
                 135deg,
                 #151923 0%,
-                #10131b 55%,
-                #0e1219 100%
+                #0f1219 55%,
+                #10151d 100%
             );
-        margin-bottom: 2rem;
-        box-shadow:
-            0 24px 70px rgba(0, 0, 0, 0.25);
-    }
-
-    .hero-grid {
-        position: absolute;
-        inset: 0;
-        opacity: 0.08;
-        background-image:
-            linear-gradient(#8b95a7 1px, transparent 1px),
-            linear-gradient(90deg, #8b95a7 1px, transparent 1px);
-        background-size: 34px 34px;
-        mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 65%,
-            transparent
-        );
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
+        margin-bottom: 1.8rem;
     }
 
     .hero-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.72rem;
-        font-weight: 800;
+        font-size: 0.78rem;
+        font-weight: 700;
         letter-spacing: 2px;
-        color: #9aa5b8;
-        margin-bottom: 0.85rem;
-    }
-
-    .hero-label-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #7c6cff;
-        box-shadow: 0 0 12px rgba(124,108,255,0.8);
+        color: #8b95a7;
+        margin-bottom: 0.7rem;
     }
 
     .hero-title {
-        font-size: 2.9rem;
-        font-weight: 850;
-        line-height: 1.08;
-        margin-bottom: 0.85rem;
-        color: #f5f7fb;
-    }
-
-    .hero-title span {
-        background:
-            linear-gradient(
-                90deg,
-                #ffffff,
-                #a9a2ff
-            );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2.7rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 0.8rem;
+        color: #f4f6fa;
     }
 
     .hero-description {
         color: #9ba5b5;
         font-size: 1rem;
-        line-height: 1.65;
+        line-height: 1.6;
         max-width: 760px;
     }
 
-    .agent-status {
+    .online {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        margin-top: 1.35rem;
-        padding: 0.45rem 0.85rem;
+        gap: 7px;
+        margin-top: 1.2rem;
+        padding: 0.35rem 0.75rem;
         border-radius: 999px;
-        background: rgba(73, 180, 105, 0.08);
-        border: 1px solid rgba(91, 210, 124, 0.22);
-        color: #a5d9b2;
-        font-size: 0.76rem;
-        font-weight: 700;
+        background: #151c18;
+        border: 1px solid #27352c;
+        color: #9fd3ad;
+        font-size: 0.78rem;
+        font-weight: 600;
     }
 
-    .status-dot {
+    .online-dot {
         width: 7px;
         height: 7px;
         border-radius: 50%;
         background: #5bd27c;
-        box-shadow: 0 0 10px rgba(91, 210, 124, 0.7);
+        display: inline-block;
+    }
+
+
+    /* ========================================================
+       SECTION LABEL
+       ======================================================== */
+
+    .section-label {
+        color: #7f8999;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
     }
 
 
@@ -234,51 +138,22 @@ st.markdown(
        ======================================================== */
 
     .prompt-card {
-        height: 100%;
-        background:
-            linear-gradient(
-                145deg,
-                #141820,
-                #10131a
-            );
-        border: 1px solid #252b38;
-        border-radius: 14px;
-        padding: 1rem 1.05rem;
-        min-height: 92px;
-        transition:
-            transform 0.18s ease,
-            border-color 0.18s ease,
-            background 0.18s ease;
-    }
-
-    .prompt-card:hover {
-        transform: translateY(-3px);
-        border-color: #3b4260;
-        background: #171b25;
-    }
-
-    .prompt-icon {
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        background: #1d2130;
-        color: #a59cff;
-        font-size: 0.85rem;
-        margin-bottom: 0.65rem;
+        background: #12161e;
+        border: 1px solid #252b37;
+        border-radius: 12px;
+        padding: 0.8rem 1rem;
+        min-height: 78px;
     }
 
     .prompt-card-title {
         font-size: 0.82rem;
-        font-weight: 750;
-        color: #e1e5ec;
-        margin-bottom: 0.3rem;
+        font-weight: 700;
+        color: #dce1e9;
+        margin-bottom: 0.35rem;
     }
 
     .prompt-card-text {
-        font-size: 0.72rem;
+        font-size: 0.74rem;
         color: #7f8999;
         line-height: 1.45;
     }
@@ -292,49 +167,94 @@ st.markdown(
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 7px;
-        padding: 1.25rem;
-        background:
-            linear-gradient(
-                145deg,
-                #11151d,
-                #0d1016
-            );
+        gap: 8px;
+        padding: 1.3rem;
+        background: #10141b;
         border: 1px solid #252b37;
-        border-radius: 16px;
-        margin: 0.9rem 0 1.5rem 0;
+        border-radius: 14px;
+        margin: 1rem 0 1.5rem 0;
         overflow-x: auto;
     }
 
     .workflow-step {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        padding: 0.6rem 0.8rem;
-        border-radius: 9px;
-        background: #181d27;
-        border: 1px solid #2b3241;
-        color: #c2c9d4;
-        font-size: 0.73rem;
-        font-weight: 700;
+        padding: 0.55rem 0.8rem;
+        border-radius: 8px;
+        background: #181d26;
+        border: 1px solid #2a303d;
+        color: #b7bfcc;
+        font-size: 0.76rem;
+        font-weight: 600;
         white-space: nowrap;
     }
 
-    .workflow-number {
-        width: 18px;
-        height: 18px;
-        border-radius: 5px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #242a3a;
-        color: #938aff;
-        font-size: 0.61rem;
+    .workflow-arrow {
+        color: #596272;
+        font-size: 0.9rem;
     }
 
-    .workflow-arrow {
-        color: #535c6d;
-        font-size: 0.9rem;
+
+    /* ========================================================
+       INPUT AREA
+       ======================================================== */
+
+    /* IMPORTANT:
+       Scope styling only to Streamlit's actual text area.
+       This avoids interfering with hidden/internal textareas.
+    */
+
+    div[data-testid="stTextArea"] {
+        width: 100%;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    div[data-testid="stTextArea"] textarea {
+        background: #11151d !important;
+        color: #f4f6fa !important;
+
+        border: 1px solid #303745 !important;
+        border-radius: 12px !important;
+
+        padding: 16px !important;
+
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+
+        resize: vertical !important;
+
+        pointer-events: auto !important;
+        user-select: text !important;
+        -webkit-user-select: text !important;
+
+        caret-color: #ffffff !important;
+
+        position: relative !important;
+        z-index: 9999 !important;
+
+        opacity: 1 !important;
+    }
+
+    div[data-testid="stTextArea"] textarea:focus {
+        border-color: #596579 !important;
+        outline: none !important;
+        box-shadow: 0 0 0 1px #596579 !important;
+    }
+
+    div[data-testid="stTextArea"] textarea::placeholder {
+        color: #7f8999 !important;
+        opacity: 1 !important;
+    }
+
+
+    /* ========================================================
+       BUTTON
+       ======================================================== */
+
+    .stButton > button {
+        border-radius: 10px;
+        min-height: 3rem;
+        font-weight: 700;
+        border: 1px solid #343b49;
     }
 
 
@@ -345,28 +265,18 @@ st.markdown(
     .answer-card {
         background: #11161e;
         border: 1px solid #29303d;
-        border-radius: 16px;
+        border-radius: 15px;
         padding: 1.4rem 1.5rem;
         margin-top: 0.8rem;
     }
 
     .answer-label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #929cad;
-        font-size: 0.70rem;
-        font-weight: 800;
+        color: #8993a4;
+        font-size: 0.72rem;
+        font-weight: 700;
         letter-spacing: 1.3px;
         text-transform: uppercase;
-        margin-bottom: 1rem;
-    }
-
-    .answer-label-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #7c6cff;
+        margin-bottom: 0.8rem;
     }
 
 
@@ -377,115 +287,32 @@ st.markdown(
     .metric-card {
         background: #11151d;
         border: 1px solid #252b37;
-        border-radius: 13px;
+        border-radius: 12px;
         padding: 1rem 1.1rem;
     }
 
-    .metric-top {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        color: #737e90;
-        font-size: 0.68rem;
-        font-weight: 700;
+    .metric-label {
+        color: #7e8797;
+        font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
-    .metric-icon {
-        color: #9188ff;
-    }
-
     .metric-value {
         color: #edf0f5;
-        font-size: 1rem;
-        font-weight: 750;
-        margin-top: 0.45rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-top: 0.25rem;
     }
 
 
     /* ========================================================
-       BUTTON
-       ======================================================== */
-
-    .stButton > button {
-        border-radius: 11px;
-        min-height: 3.1rem;
-        font-weight: 750;
-        border: 1px solid #3b4260;
-        transition: all 0.18s ease;
-    }
-
-    .stButton > button:hover {
-        border-color: #756bff;
-        box-shadow:
-            0 8px 28px rgba(89, 76, 210, 0.18);
-    }
-
-
-    /* ========================================================
-       TEXT AREA
-       ======================================================== */
-
-    textarea {
-        background: #10141b !important;
-        border: 1px solid #303745 !important;
-        border-radius: 13px !important;
-    }
-
-    textarea:focus {
-        border-color: #6158c9 !important;
-        box-shadow:
-            0 0 0 1px rgba(97, 88, 201, 0.25) !important;
-    }
-
-
-    /* ========================================================
-       ALERTS
+       ALERT / INFO
        ======================================================== */
 
     div[data-testid="stAlert"] {
         border-radius: 12px;
     }
-
-
-    /* ========================================================
-       SIDEBAR CAPABILITIES
-       ======================================================== */
-
-    .side-item {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        padding: 0.45rem 0;
-        color: #b6becb;
-        font-size: 0.79rem;
-        font-weight: 600;
-    }
-
-    .side-dot {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #6d5dfc;
-    }
-
-    .tech-item {
-        margin-bottom: 0.8rem;
-    }
-
-    .tech-name {
-        color: #dfe3ea;
-        font-size: 0.78rem;
-        font-weight: 700;
-    }
-
-    .tech-desc {
-        color: #707b8d;
-        font-size: 0.68rem;
-        margin-top: 2px;
-    }
-
 
     </style>
     """,
@@ -511,95 +338,55 @@ app = load_agent()
 
 with st.sidebar:
 
-    st.html(
+    st.title("Codebase Agent")
+
+    st.caption("Autonomous AI Engineering")
+
+    st.divider()
+
+    st.markdown(
+        '<div class="section-label">Capabilities</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
         """
-        <div class="brand">
+        **Codebase Search**
 
-            <div class="brand-logo">
-                <svg viewBox="0 0 32 32" fill="none">
-                    <path
-                        d="M10 8L4.5 16L10 24"
-                        stroke="white"
-                        stroke-width="2.6"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M22 8L27.5 16L22 24"
-                        stroke="white"
-                        stroke-width="2.6"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M18.5 6L13.5 26"
-                        stroke="white"
-                        stroke-width="2.3"
-                        stroke-linecap="round"
-                    />
-                </svg>
-            </div>
+        **Code Analysis**
 
-            <div>
-                <div class="brand-title">
-                    Codebase Agent
-                </div>
-                <div class="brand-subtitle">
-                    Autonomous AI Engineering
-                </div>
-            </div>
+        **Tool Selection**
 
-        </div>
+        **Code Modification**
+
+        **Test Execution**
+
+        **Validation**
         """
     )
 
     st.divider()
 
-    st.html(
-        '<div class="section-label">Capabilities</div>'
+    st.markdown(
+        '<div class="section-label">Technology Stack</div>',
+        unsafe_allow_html=True,
     )
 
-    capabilities = [
-        "Codebase Search",
-        "Code Analysis",
-        "Tool Selection",
-        "Code Modification",
-        "Test Execution",
-        "Validation",
-    ]
+    st.markdown(
+        """
+        **LangGraph**  
+        Agent orchestration
 
-    for item in capabilities:
-        st.html(
-            f"""
-            <div class="side-item">
-                <span class="side-dot"></span>
-                {item}
-            </div>
-            """
-        )
+        **Qdrant**  
+        Vector retrieval
 
-    st.divider()
+        **MiniLM**  
+        Code embeddings
 
-    st.html(
-        '<div class="section-label">Technology Stack</div>'
+        **Qwen**  
+        Language model
+        """
     )
-
-    technologies = [
-        ("LangGraph", "Agent orchestration"),
-        ("Qdrant", "Vector retrieval"),
-        ("MiniLM", "Code embeddings"),
-        ("Qwen", "Language model"),
-    ]
-
-    for name, description in technologies:
-        st.html(
-            f"""
-            <div class="tech-item">
-                <div class="tech-name">{name}</div>
-                <div class="tech-desc">{description}</div>
-            </div>
-            """
-        )
 
     st.divider()
 
@@ -612,61 +399,43 @@ with st.sidebar:
 # HERO
 # ============================================================
 
-st.html(
-    """
-    <div class="hero">
-
-        <div class="hero-grid"></div>
-
-        <div class="hero-content">
-
-            <div class="hero-label">
-                <span class="hero-label-dot"></span>
-                AUTONOMOUS AI CODEBASE ENGINEERING
-            </div>
-
-            <div class="hero-title">
-                Build. Analyze.
-                <span>Modify. Validate.</span>
-            </div>
-
-            <div class="hero-description">
-                An autonomous LangGraph agent that understands your
-                codebase, retrieves relevant code, selects tools,
-                performs engineering tasks, runs tests, and validates
-                the result.
-            </div>
-
-            <div class="agent-status">
-                <span class="status-dot"></span>
-                Agent Ready
-            </div>
-
-        </div>
-
+st.markdown("""
+<div class="hero">
+    <div class="hero-label">AUTONOMOUS AI CODEBASE ENGINEERING</div>
+    <div class="hero-title">Build. Analyze. Modify. Validate.</div>
+    <div class="hero-description">
+        An autonomous LangGraph agent that understands your
+        codebase, retrieves relevant code, selects tools,
+        performs engineering tasks, runs tests, and validates
+        the result.
     </div>
-    """
-)
+    <div class="online"><span class="online-dot"></span>Agent Ready</div>
+</div>
+""", unsafe_allow_html=True)
 
 
+# ASK CODEBASE
 # ============================================================
-# CODEBASE INTERFACE
-# ============================================================
 
-st.html(
-    '<div class="section-label">Codebase Interface</div>'
+st.markdown(
+    '<div class="section-label">Codebase Interface</div>',
+    unsafe_allow_html=True,
 )
 
 st.subheader("Ask Your Codebase")
 
+
 question = st.text_area(
     "Enter your request",
+    value="",
     placeholder=(
         "Ask about your codebase...\n\n"
         "Example: Why is QdrantClient used in this project?"
     ),
     height=140,
     label_visibility="collapsed",
+    key="codebase_question",
+    disabled=False,
 )
 
 
@@ -674,159 +443,52 @@ question = st.text_area(
 # EXAMPLE PROMPTS
 # ============================================================
 
-st.html(
-    '<div class="section-label">Try an Example</div>'
-)
+st.markdown('<div class="section-label">Try an Example</div>', unsafe_allow_html=True)
 
 p1, p2, p3, p4 = st.columns(4)
 
-
 with p1:
-    st.html(
-        """
-        <div class="prompt-card">
-
-            <div class="prompt-icon">⌘</div>
-
-            <div class="prompt-card-title">
-                Analyze Code
-            </div>
-
-            <div class="prompt-card-text">
-                Find functions and explain their purpose.
-            </div>
-
-        </div>
-        """
-    )
-
+    st.markdown("**Analyze Code**")
+    st.caption("Find functions and explain their purpose.")
 
 with p2:
-    st.html(
-        """
-        <div class="prompt-card">
-
-            <div class="prompt-icon">⌕</div>
-
-            <div class="prompt-card-title">
-                Search Project
-            </div>
-
-            <div class="prompt-card-text">
-                Find where QdrantClient is used.
-            </div>
-
-        </div>
-        """
-    )
-
+    st.markdown("**Search Project**")
+    st.caption("Find where QdrantClient is used.")
 
 with p3:
-    st.html(
-        """
-        <div class="prompt-card">
-
-            <div class="prompt-icon">▶</div>
-
-            <div class="prompt-card-title">
-                Run Test
-            </div>
-
-            <div class="prompt-card-text">
-                Verify that greet() returns the expected output.
-            </div>
-
-        </div>
-        """
-    )
-
+    st.markdown("**Run Test**")
+    st.caption("Verify that greet() returns the expected output.")
 
 with p4:
-    st.html(
-        """
-        <div class="prompt-card">
-
-            <div class="prompt-icon">✦</div>
-
-            <div class="prompt-card-title">
-                Modify Code
-            </div>
-
-            <div class="prompt-card-text">
-                Add a comment or make a requested code change.
-            </div>
-
-        </div>
-        """
-    )
-
+    st.markdown("**Modify Code**")
+    st.caption("Add a comment or make a requested code change.")
 
 st.write("")
 
 
-# ============================================================
 # WORKFLOW
 # ============================================================
 
-st.html(
-    '<div class="section-label">Agent Workflow</div>'
-)
+st.markdown('<div class="section-label">Agent Workflow</div>', unsafe_allow_html=True)
 
-st.html(
-    """
-    <div class="workflow">
+workflow_cols = st.columns(11)
+steps = ["Analyze", "→", "Retrieve", "→", "Select Tool", "→", "Execute", "→", "Test", "→", "Validate"]
 
-        <div class="workflow-step">
-            <span class="workflow-number">1</span>
-            Analyze
-        </div>
+for col, step in zip(workflow_cols, steps):
+    with col:
+        if step == "→":
+            st.markdown(f"<div style=\"text-align:center;color:#596272;font-size:1.1rem;padding-top:0.45rem;\">{step}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<div style=\"text-align:center;background:#181d26;border:1px solid #2a303d;border-radius:8px;padding:0.55rem 0.25rem;color:#b7bfcc;font-size:0.76rem;font-weight:600;white-space:nowrap;\">{step}</div>", unsafe_allow_html=True)
 
-        <div class="workflow-arrow">→</div>
-
-        <div class="workflow-step">
-            <span class="workflow-number">2</span>
-            Retrieve
-        </div>
-
-        <div class="workflow-arrow">→</div>
-
-        <div class="workflow-step">
-            <span class="workflow-number">3</span>
-            Select Tool
-        </div>
-
-        <div class="workflow-arrow">→</div>
-
-        <div class="workflow-step">
-            <span class="workflow-number">4</span>
-            Execute
-        </div>
-
-        <div class="workflow-arrow">→</div>
-
-        <div class="workflow-step">
-            <span class="workflow-number">5</span>
-            Test
-        </div>
-
-        <div class="workflow-arrow">→</div>
-
-        <div class="workflow-step">
-            <span class="workflow-number">6</span>
-            Validate
-        </div>
-
-    </div>
-    """
-)
+st.write("")
 
 
-# ============================================================
 # RUN AGENT
 # ============================================================
 
 run_agent = st.button(
-    "⚡  Run Autonomous Agent",
+    "Run Autonomous Agent",
     type="primary",
     use_container_width=True,
 )
@@ -834,8 +496,16 @@ run_agent = st.button(
 
 if run_agent:
 
+    # --------------------------------------------------------
+    # INPUT VALIDATION
+    # --------------------------------------------------------
+
     if not question.strip():
-        st.warning("Please enter a request first.")
+
+        st.warning(
+            "Please enter a request first."
+        )
+
         st.stop()
 
 
@@ -870,31 +540,20 @@ if run_agent:
     # FINAL ANSWER
     # ========================================================
 
-    st.html(
-        '<div class="section-label">Agent Response</div>'
+    st.markdown(
+        '<div class="section-label">Agent Response</div>',
+        unsafe_allow_html=True,
     )
 
-    st.html(
-        """
-        <div class="answer-card">
+    with st.container(border=True):
+        st.markdown("**FINAL ANSWER**")
 
-            <div class="answer-label">
-                <span class="answer-label-dot"></span>
-                Final Answer
-            </div>
-        """
-    )
+        answer = result.get("answer", "")
 
-    answer = result.get("answer", "")
-
-    if answer:
-        st.markdown(answer)
-    else:
-        st.info(
-            "No final answer was generated."
-        )
-
-    st.html("</div>")
+        if answer:
+            st.markdown(answer)
+        else:
+            st.info("No final answer was generated.")
 
 
     # ========================================================
@@ -903,87 +562,24 @@ if run_agent:
 
     st.write("")
 
-    st.html(
-        '<div class="section-label">Execution Summary</div>'
+    st.markdown(
+        '<div class="section-label">Execution Summary</div>',
+        unsafe_allow_html=True,
     )
 
     c1, c2, c3, c4 = st.columns(4)
 
-
     with c1:
-        st.html(
-            """
-            <div class="metric-card">
-
-                <div class="metric-top">
-                    <span class="metric-icon">◆</span>
-                    Orchestration
-                </div>
-
-                <div class="metric-value">
-                    LangGraph
-                </div>
-
-            </div>
-            """
-        )
-
+        st.metric("Orchestration", "LangGraph")
 
     with c2:
-        st.html(
-            """
-            <div class="metric-card">
-
-                <div class="metric-top">
-                    <span class="metric-icon">◈</span>
-                    Retrieval
-                </div>
-
-                <div class="metric-value">
-                    Qdrant
-                </div>
-
-            </div>
-            """
-        )
-
+        st.metric("Retrieval", "Qdrant")
 
     with c3:
-        st.html(
-            """
-            <div class="metric-card">
-
-                <div class="metric-top">
-                    <span class="metric-icon">✦</span>
-                    LLM
-                </div>
-
-                <div class="metric-value">
-                    Qwen
-                </div>
-
-            </div>
-            """
-        )
-
+        st.metric("LLM", "Qwen")
 
     with c4:
-        st.html(
-            """
-            <div class="metric-card">
-
-                <div class="metric-top">
-                    <span class="metric-icon">✓</span>
-                    Status
-                </div>
-
-                <div class="metric-value">
-                    Validated
-                </div>
-
-            </div>
-            """
-        )
+        st.metric("Status", "Validated")
 
 
     # ========================================================
@@ -995,6 +591,7 @@ if run_agent:
     with st.expander(
         "View Full Agent Execution"
     ):
+
         st.json(result)
 
 
